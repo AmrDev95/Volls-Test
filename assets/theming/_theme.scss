@@ -1,0 +1,89 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@include mat.core();
+@import './colors';
+
+$light-foreground: (
+  base: #000000,
+  divider: #FFFFFF66,
+  /* slate.200 */ dividers: #b1b5c3a3,
+  /* slate.200 */ // disabled: #94A3B8, /* slate.400 */
+  // disabled-button: #94A3B8, /* slate.400 */
+  // disabled-text: #94A3B8, /* slate.400 */
+  // elevation: #000000,
+  // hint-text: #94A3B8, /* slate.400 */
+  // secondary-text: #64748B, /* slate.500 */
+  // icon: #64748B, /* slate.500 */
+  // icons: #64748B, /* slate.500 */
+  // mat-icon: #64748B, /* slate.500 */
+  // text: #1E293B, /* slate.800 */
+  // slider-min: #1E293B, /* slate.800 */
+  // slider-off: #CBD5E1, /* slate.300 */
+  // slider-off-active: #94A3B8 /* slate.400 */
+);
+
+$light-background: (
+  background: #000a3c,
+  // status-bar: #CBD5E1, /* slate.300 */
+  // app-bar: #FFFFFF,
+  // background: #F1F5F9, /* slate.100 */
+  // hover: rgba(148, 163, 184, 0.12), /* slate.400 + opacity */
+  card: #0e1746,
+  dialog: #0f172a,
+  // disabled-button: rgba(148, 163, 184, 0.38), /* slate.400 + opacity */
+  // raised-button: #FFFFFF,
+  // focused-button: #64748B, /* slate.500 */
+  // selected-button: #E2E8F0, /* slate.200 */
+  // selected-disabled-button: #E2E8F0, /* slate.200 */
+  // disabled-button-toggle: #CBD5E1, /* slate.300 */
+  // unselected-chip: #E2E8F0, /* slate.200 */
+  // disabled-list-option: #CBD5E1, /* slate.300 */
+  tooltip: #1e293b,
+  /* slate.800 */ // paginator:#F1F5F9,
+  // mat-form-field: (
+  //   border-color:red, // Custom border color
+  //   background-color: #F0F0F0, // Custom background color
+  //   text-color: #333,
+  // )
+);
+
+$custom-typography: mat.define-typography-config(
+  $font-family: 'SoletoTrial',
+  $headline-1: mat.define-typography-level(1.875rem, 2.25rem, 800, 'SoletoTrial'),
+  $headline-2: mat.define-typography-level(1.25rem, 1.75rem, 700, 'SoletoTrial'),
+  $headline-3: mat.define-typography-level(1.125rem, 1.75rem, 600, 'SoletoTrial'),
+  $headline-4: mat.define-typography-level(0.875rem, 1.25rem, 600, 'SoletoTrial'),
+  $headline-5: mat.define-typography-level(0.875rem, 1.5rem, 400, 'SoletoTrial'),
+  $headline-6: mat.define-typography-level(0.875rem, 1.5rem, 400, 'SoletoTrial'),
+  $subtitle-1: mat.define-typography-level(1rem, 1.75rem, 400, 'SoletoTrial'),
+  $subtitle-2: mat.define-typography-level(0.875rem, 1.25rem, 600, 'SoletoTrial'),
+  $body-1: mat.define-typography-level(0.875rem, 1.5rem, 400, 'SoletoTrial'),
+  $body-2: mat.define-typography-level(0.875rem, 1.5rem, 400, 'SoletoTrial'),
+  $caption: mat.define-typography-level(0.75rem, 1rem, 400, 'SoletoTrial'),
+  $button: mat.define-typography-level(0.875rem, 0.875rem, 500, 'SoletoTrial'),
+  $overline: mat.define-typography-level(0.75rem, 2rem, 500, 'SoletoTrial'),
+);
+
+// Define the light theme palette
+$custom-light-primary: mat.define-palette($custom-brand-primary, 500);
+$custom-light-accent: mat.define-palette($custom-brand-accent, 500);
+$custom-danger: mat.define-palette($custom-brand-danger, 500);
+
+$light-theme: (
+  primary: $custom-light-primary,
+  accent: $custom-light-accent,
+  warn: $custom-danger,
+  background: $light-background,
+  foreground: $light-foreground,
+);
+
+//define typography fonts
+@include mat.all-component-themes(
+  (
+    typography: $custom-typography,
+  )
+);
+
+// Include the default theme styles.
+@include mat.all-component-themes($light-theme);
+// @include mat.button-theme($light-theme);
